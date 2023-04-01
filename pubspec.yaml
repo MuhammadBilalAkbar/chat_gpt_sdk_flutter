@@ -9,9 +9,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  velocity_x: ^3.6.0
-  flutter_dotenv: ^5.0.2
   chat_gpt_sdk: ^2.0.6
+  material_buttonx: 2.0.3
 
 dev_dependencies:
   flutter_test:
@@ -20,5 +19,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - .env
