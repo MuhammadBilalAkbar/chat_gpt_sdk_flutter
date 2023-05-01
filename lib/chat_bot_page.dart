@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 
@@ -217,7 +215,6 @@ class _ChatBotPageState extends State<ChatBotPage> {
                 suffixIcon: GestureDetector(
                   onTap: () {
                     sendMessage(textMessage.text.toString());
-                    // FocusManager.instance.primaryFocus?.unfocus();
                     setState(() {
                       messages.add(
                         MessageModel(false, textMessage.text.toString()),
