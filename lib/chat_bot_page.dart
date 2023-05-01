@@ -15,12 +15,13 @@ class ChatBotPage extends StatefulWidget {
 class _ChatBotPageState extends State<ChatBotPage> {
   final textMessage = TextEditingController();
   late OpenAI openAI;
+
   // StreamSubscription? subscription;
   static const kDefault = 15.0;
   static const kHeight = 50.0;
 
   /// openai api key
-  final apiKey = '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';
+  final apiKey = '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';
 
   /// list messages
   // final messages =
@@ -78,7 +79,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
-      body: Stack(
+      body: Column(
         children: [
           messageList(),
           bottomNavigation(context),
@@ -87,22 +88,14 @@ class _ChatBotPageState extends State<ChatBotPage> {
     );
   }
 
-  Column messageList() {
-    return Column(
-      children: [
-        Expanded(
-          // flex: 7,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: kDefault * 4),
-            child: ListView.builder(
-              itemCount: messages.length,
-              itemBuilder: (context, index) => messages[index].isBot
-                  ? botCard(index: index)
-                  : userCard(index: index),
-            ),
-          ),
-        ),
-      ],
+  Flexible messageList() {
+    return Flexible(
+      child: ListView.builder(
+        itemCount: messages.length,
+        itemBuilder: (context, index) => messages[index].isBot
+            ? botCard(index: index)
+            : userCard(index: index),
+      ),
     );
   }
 
@@ -238,7 +231,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
                     color: Colors.blue,
                   ),
                 ),
-                hintText: '   ...A',
+                hintText: 'Enter question here',
                 border: InputBorder.none,
               ),
               textInputAction: TextInputAction.send,
@@ -247,23 +240,14 @@ class _ChatBotPageState extends State<ChatBotPage> {
         ),
       );
 
-  AppBar appBar() {
-    return AppBar(
-      backgroundColor: Colors.teal,
+  AppBar appBar() =>AppBar(
       leading: const Padding(
-        padding: EdgeInsets.only(left: kDefault),
+        padding: EdgeInsets.only(left: kDefault * 0.8),
         child: CircleAvatar(
           backgroundImage: AssetImage('chatGptImage.PNG'),
           radius: 50,
         ),
       ),
-      title: const Text(
-        'ChatGPT SDK Flutter',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 25,
-        ),
-      ),
+      title: const Text('ChatGPT SDK Flutter'),
     );
   }
-}
