@@ -12,39 +12,22 @@ class ChatBotPage extends StatefulWidget {
 }
 
 class _ChatBotPageState extends State<ChatBotPage> {
-  final textMessage = TextEditingController();
-  late OpenAI openAI;
-
-  // StreamSubscription? subscription;
   static const kDefault = 15.0;
   static const kHeight = 50.0;
 
+  final textMessage = TextEditingController();
+  late OpenAI openAI;
+
   /// openai api key
   final apiKey = 'YOUR_OPENAI_API_KEY';
-
-  /// list messages
-  // final messages =
-  // UnmodifiableListView<MessageModel>([MessageModel(true, 'Hi')]);
-
   final messages = [MessageModel(true, 'Hi')];
 
   void sendMessage(String message) async {
-    // final request = CompleteText(
-    //   prompt: message,
-    //   // model: kTranslateModelV3,
-    //   model: kChatGptTurbo,
-    //   maxTokens: 2000,
-    // );
-    // final event = await openAI.onCompletion(request: request);
-    // // .asBroadcastStream()
-    // // .listen((event) {
     final request = CompleteText(
       prompt: message,
       model: Model.textDavinci3,
       maxTokens: 200,
     );
-
-    // subscription = openAI.build(token: apiKey).onChatCompletion(request: request).asStream().listen((event) { });
 
     final event = await openAI.onCompletion(request: request);
     setState(() {
@@ -53,11 +36,9 @@ class _ChatBotPageState extends State<ChatBotPage> {
       );
       for (var element in messages) {
         debugPrint(element.toString());
-        debugPrint(event?.choices.last.text);
         debugPrint('element.message => ${element.message}');
       }
     });
-    // // });
   }
 
   @override
@@ -70,22 +51,19 @@ class _ChatBotPageState extends State<ChatBotPage> {
   void dispose() {
     textMessage.dispose();
     openAI.cancelAIGenerate();
-    // subscription?.cancel();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(),
-      body: Column(
-        children: [
-          messageList(),
-          bottomNavigation(context),
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Scaffold(
+        appBar: appBar(),
+        body: Column(
+          children: [
+            messageList(),
+            bottomNavigation(context),
+          ],
+        ),
+      );
 
   Flexible messageList() {
     return Flexible(
