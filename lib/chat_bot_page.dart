@@ -19,7 +19,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
   static const kHeight = 50.0;
 
   /// openai api key
-  final apiKey = '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';
+  final apiKey = 'YOUR_OPENAI_API_KEY';
 
   /// list messages
   // final messages =
@@ -237,14 +237,14 @@ class _ChatBotPageState extends State<ChatBotPage> {
         ),
       );
 
-  AppBar appBar() =>AppBar(
-      leading: const Padding(
-        padding: EdgeInsets.only(left: kDefault * 0.8),
-        child: CircleAvatar(
-          backgroundImage: AssetImage('chatGptImage.PNG'),
-          radius: 50,
+  AppBar appBar() => AppBar(
+        leading: const Padding(
+          padding: EdgeInsets.only(left: kDefault * 0.8),
+          child: CircleAvatar(
+            backgroundImage: AssetImage('chatGptImage.PNG'),
+            radius: 50,
+          ),
         ),
-      ),
-      title: const Text('ChatGPT SDK Flutter'),
-    );
-  }
+        title: const Text('ChatGPT SDK Flutter'),
+      );
+}
