@@ -3,6 +3,4 @@ class MessageModel {
   final String message;
 
   MessageModel(this.isBot, this.message);
-
-
 }
