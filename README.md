@@ -123,6 +123,10 @@ class MessageModel {
 
 ```
 
+Chat Bot Gif:
+
+![](ChatGPT_SDK_Output.gif)
+
 4. In `chat_bot_page.dart` file, I have defined some constants and variables:
 
 kDefault and kHeight are constants used for UI.
