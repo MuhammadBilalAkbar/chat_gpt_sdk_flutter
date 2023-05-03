@@ -123,7 +123,7 @@ class MessageModel {
 
 ```
 
-Chat Bot Gif:
+**Chat Bot Gif:**
 
 ![](ChatGPT_SDK_Output.gif)
 
